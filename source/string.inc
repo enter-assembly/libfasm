@@ -44,13 +44,11 @@ strcmp:
 ; output: void
 public strnum
 strnum:
-	push	rax
 	push	rdi
 	push	rsi
 
-	mov	rax, 0x8000000000000000
-	test	rdi, rax
-	jz	.not_negative
+	cmp	rdi, 0
+	jns	.not_negative
 	neg	rdi
 	mov	[rsi], byte '-'
 	inc	rsi
@@ -60,7 +58,6 @@ strnum:
 .return:
 	pop	rsi
 	pop	rdi
-	pop	rax
 	ret
 
 ; input:
@@ -68,11 +65,13 @@ strnum:
 ; | rsi - buffer
 ; output: void
 strposnum:
+	push	rax
 	push	rdx
 	mov	rax, rdi
 	mov	rdi, 10
 	call	iteration
 	pop	rdx
+	pop	rax
 	ret
 iteration:
 	xor	rdx, rdx
