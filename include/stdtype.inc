@@ -58,7 +58,7 @@ common
     . SSIZEA __value
 }
 
-struc UINTN [__value] {
+struc UINTNA [__value] {
 common
     . USIZEA __value
 }
