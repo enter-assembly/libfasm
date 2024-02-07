@@ -17,6 +17,20 @@ __TYPE__ UINT64, dq
 __TYPE__ CHAR8, db
 __TYPE__ CHAR16, du
 
+struc INTN [__value] {
+common
+    . SSIZE __value
+}
+
+struc UINTN [__value] {
+common
+    . USIZE __value
+}
+
+struc PTR __typename, __value {
+    . USIZE __value
+}
+
 ; Aligned types
 
 ALIGN_1 equ 1
@@ -38,4 +52,18 @@ __TYPE__ UINT64A, dq, ALIGN_8
 
 __TYPE__ CHAR8A, db, ALIGN_1
 __TYPE__ CHAR16A, du, ALIGN_2
+
+struc INTNA [__value] {
+common
+    . SSIZEA __value
+}
+
+struc UINTN [__value] {
+common
+    . USIZEA __value
+}
+
+struc PTRA __typename, __value {
+    . USIZEA __value
+}
 
